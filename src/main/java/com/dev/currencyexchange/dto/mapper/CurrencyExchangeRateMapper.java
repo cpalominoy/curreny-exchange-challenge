@@ -1,6 +1,6 @@
 package com.dev.currencyexchange.dto.mapper;
 
-import com.dev.currencyexchange.dto.CurrencyExchangeRateResponse;
+import com.dev.currencyexchange.dto.exchange.CurrencyExchangeRateResponse;
 import com.dev.currencyexchange.entity.ExchangeRateEntity;
 import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
@@ -12,8 +12,8 @@ public class CurrencyExchangeRateMapper {
       BigDecimal amountRequest) {
 
     return CurrencyExchangeRateResponse.builder()
-        .sourceCurrency(entity.getSourceCurrency())
-        .targetCurrency(entity.getTargetCurrency())
+        .source(entity.getSourceCurrencyEntity().getCode())
+        .target(entity.getTargetCurrencyEntity().getCode())
         .rate(entity.getRate())
         .baseAmount(amountRequest)
         .convertedAmount(amountRequest.multiply(entity.getRate()))

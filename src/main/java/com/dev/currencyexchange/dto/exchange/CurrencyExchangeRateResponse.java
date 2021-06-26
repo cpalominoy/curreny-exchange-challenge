@@ -1,4 +1,4 @@
-package com.dev.currencyexchange.dto;
+package com.dev.currencyexchange.dto.exchange;
 
 import java.math.BigDecimal;
 import lombok.Builder;
@@ -13,12 +13,12 @@ public class CurrencyExchangeRateResponse {
   /**
    * moneda origen.
    */
-  private String sourceCurrency;
+  private String source;
 
   /**
    * moneda destino
    */
-  private String targetCurrency;
+  private String target;
 
   /**
    * tipo de cambio

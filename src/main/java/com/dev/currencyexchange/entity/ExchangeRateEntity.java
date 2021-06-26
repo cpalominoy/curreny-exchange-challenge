@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,14 +20,17 @@ public class ExchangeRateEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "ID_EXCHANGE_RATE", nullable = false)
+  @Column(name = "EXCHANGE_RATE_ID", nullable = false)
   private Long id;
 
-  @Column(name = "SOURCE_CURRENCY", nullable = false)
-  private String sourceCurrency;
 
-  @Column(name = "TARGET_CURRENCY")
-  private String targetCurrency;
+  @ManyToOne
+  @JoinColumn(name = "SOURCE_CURRENCY_ID")
+  private CurrencyEntity sourceCurrencyEntity;
+
+  @ManyToOne
+  @JoinColumn(name = "TARGET_CURRENCY_ID")
+  private CurrencyEntity targetCurrencyEntity;
 
   @Column(name = "RATE")
   private BigDecimal rate;

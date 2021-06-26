@@ -1,0 +1,15 @@
+/* registro de monedas*/
+INSERT INTO TB_CURRENCY (CURRENCY_ID, CODE, DESCRIPTION)
+values (1, 'USD', 'Dólar estadounidense');
+
+INSERT INTO TB_CURRENCY (CURRENCY_ID, CODE, DESCRIPTION)
+values (2, 'PEN', 'Nuevo sol');
+
+/*registro del valor del tipo de cambio */
+INSERT INTO TB_EXCHANGE_RATE (SOURCE_CURRENCY_ID, TARGET_CURRENCY_ID, RATE)
+values (1, 2, 3.98);
+
+INSERT INTO TB_EXCHANGE_RATE (SOURCE_CURRENCY_ID, TARGET_CURRENCY_ID, RATE)
+values (2, 1, 0.27);
+
+

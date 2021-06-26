@@ -1,9 +1,13 @@
 package com.dev.currencyexchange.service;
 
-import com.dev.currencyexchange.dto.CurrencyExchangeRateRequest;
-import com.dev.currencyexchange.dto.CurrencyExchangeRateResponse;
+import com.dev.currencyexchange.dto.exchange.CurrencyExchangeRateRequest;
+import com.dev.currencyexchange.dto.exchange.CurrencyExchangeRateResponse;
+import com.dev.currencyexchange.dto.exchange.ExchangeRateResponse;
+import java.util.List;
 
 public interface ExchangeRateService {
 
-  CurrencyExchangeRateResponse getExchangeRate(CurrencyExchangeRateRequest request);
+  List<ExchangeRateResponse> getAllExchangeRate();
+
+  CurrencyExchangeRateResponse getCurrencyExchangeRate(CurrencyExchangeRateRequest request);
 }
