@@ -5,9 +5,19 @@ import com.dev.currencyexchange.entity.ExchangeRateEntity;
 import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
 
+/**
+ * CurrencyExchangeRateMapper DTO - Entity.
+ */
 @Component
 public class CurrencyExchangeRateMapper {
 
+  /**
+   * Method convert ExchangeRateEntity to DTO.
+   *
+   * @param entity        ExchangeRateEntity
+   * @param amountRequest request
+   * @return CurrencyExchangeRateResponse
+   */
   public CurrencyExchangeRateResponse toGenerateDto(ExchangeRateEntity entity,
       BigDecimal amountRequest) {
 

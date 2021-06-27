@@ -5,6 +5,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * CurrencyExchangeRateResponse class that represents a data presentation model that will be exposed
+ * by the api for the response of each request.
+ */
 @Getter
 @Setter
 @Builder(toBuilder = true)
@@ -16,22 +20,22 @@ public class CurrencyExchangeRateResponse {
   private String source;
 
   /**
-   * moneda destino
+   * moneda destino.
    */
   private String target;
 
   /**
-   * tipo de cambio
+   * tipo de cambio.
    */
   private BigDecimal rate;
 
   /**
-   * monto original
+   * monto original.
    */
   private BigDecimal baseAmount;
 
   /**
-   * monto con tipo de cambio
+   * monto con tipo de cambio.
    */
   private BigDecimal convertedAmount;
 
