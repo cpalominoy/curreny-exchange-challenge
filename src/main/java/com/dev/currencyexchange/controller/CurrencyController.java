@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,12 +27,14 @@ public class CurrencyController {
   private final CurrencyService currencyService;
 
   @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+  @PreAuthorize("hasAnyAuthority('ADMIN_USER') or hasAnyAuthority('STANDARD_USER')")
   public ResponseEntity<List<CurrencyResponse>> getAllCurrencies() {
     return new ResponseEntity<>(currencyService.getAllCurrencies(), HttpStatus.OK);
   }
 
   @PostMapping(value = "/registry",
       consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @PreAuthorize("hasAnyAuthority('ADMIN_USER') or hasAnyAuthority('STANDARD_USER')")
   public ResponseEntity<CurrencyResponse> registryCurrency(@RequestBody CurrencyRequest request) {
     return new ResponseEntity<>(currencyService.registryCurrency(request), HttpStatus.CREATED);
   }

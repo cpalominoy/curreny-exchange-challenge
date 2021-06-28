@@ -23,7 +23,40 @@ Currency Exchange Challenge
 
 ## Aplicación
 
-Servicio para calcular la conversión de moneda:
+Servicio para calcular la conversión de moneda
+
+- Antes de realizar una petición a los servicios se debera realizar la autenticación y autorización
+  del usuario mediante la generación de una llave JWT:
+
+```shell
+curl --location --request POST 'http://localhost:9092/oauth/token' \
+--header 'Authorization: Basic dGVzdGp3dGNsaWVudGlkOlhZN2ttem9OemwxMDA=' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'username=admin.admin' \
+--data-urlencode 'password=challenge-jwt'
+```
+
+- Donde la respuesta del servicio tiene el siguiente formato:
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdGp3dHJlc291cmNlaWQiXSwidXNlcl9uYW1lIjoiYWRtaW4uYWRtaW4iLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNjI4NDUwNTk5LCJhdXRob3JpdGllcyI6WyJTVEFOREFSRF9VU0VSIiwiQURNSU5fVVNFUiJdLCJqdGkiOiI2M2Q0MTQwOC0zOWM1LTRiNGItOTE5Yi0xZGRhZGI5NTY2YzUiLCJjbGllbnRfaWQiOiJ0ZXN0and0Y2xpZW50aWQifQ.jG0aPGBhFyman2aW1oltIfNBvFRqvBJzSrj2NHIYTp8",
+  "token_type": "bearer",
+  "expires_in": 3599999,
+  "scope": "read write",
+  "jti": "63d41408-39c5-4b4b-919b-1ddadb9566c5"
+}
+
+```
+
+- Para el consumo de los servicios se deberá colocar como header el valor de access_token en "
+  Authorization":
+
+```shell
+curl --location --request GET 'http://localhost:9092/service/v1/exchange-rate/all' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdGp3dHJlc291cmNlaWQiXSwidXNlcl9uYW1lIjoiYWRtaW4uYWRtaW4iLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNjI4NDUwNTk5LCJhdXRob3JpdGllcyI6WyJTVEFOREFSRF9VU0VSIiwiQURNSU5fVVNFUiJdLCJqdGkiOiI2M2Q0MTQwOC0zOWM1LTRiNGItOTE5Yi0xZGRhZGI5NTY2YzUiLCJjbGllbnRfaWQiOiJ0ZXN0and0Y2xpZW50aWQifQ.jG0aPGBhFyman2aW1oltIfNBvFRqvBJzSrj2NHIYTp8'
+```
 
 ### 1. Consultar Tipo de cambio por moneda y monto
 
