@@ -33,9 +33,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         .authorizeRequests()
         .antMatchers("/service/v1/exchange-rate/**", "/service/v1/currency/**").authenticated();
 
-    //habilitar el h2-console
-    http.csrf().disable();
-    http.headers().frameOptions().disable();
-
+    
   }
 }
